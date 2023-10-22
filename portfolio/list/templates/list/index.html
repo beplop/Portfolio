@@ -1,0 +1,19 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}GitHub{% endblock %}
+
+{% block content %}
+<div class="features">
+    <h1>Мои проекты</h1>
+    {% if gits %}
+    {% for el in gits %}
+    <div class="alert alert-warning">
+        <h3>{{el.title}}</h3>
+        <p>{{el.anons}}</p>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p>Нет проектов</p>
+    {% endif %}
+</div>
+{% endblock %}
