@@ -8,8 +8,10 @@
     {% if gits %}
     {% for el in gits %}
     <div class="alert alert-warning">
-        <h3>{{el.title}}</h3>
-        <p>{{el.anons}}</p>
+        <h3>{{el.name}}</h3>
+        <p>{{el.descript}}</p>
+        <p>{{el.language}}</p>
+        <p>{{el.date}}</p>
     </div>
     {% endfor %}
     {% else %}
