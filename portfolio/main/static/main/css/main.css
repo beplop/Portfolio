@@ -111,9 +111,9 @@ main .features {
     float: right;
     color: dimgrey;
     margin-top: 100px;
-    margin-right: 20%;
+    margin-right: 15%;
     text-align: center;
-    width: 55%;
+    width: 60%;
 }
 
 main .features p {
@@ -122,5 +122,14 @@ main .features p {
 
 main .features h1 {
     font-weight: bold;
+}
+
+.odd_row {
+    background: white;
+}
+
+.even_row {
+    background: #074e9f;
+    color: white;
 }
 

@@ -5,17 +5,35 @@
 {% block content %}
 <div class="features">
     <h1>Мои проекты</h1>
+    <br>
+    <select name="filter_language" id="language-select">
+        {% for language in set_languages %}
+        <option value="{language}">{{language}}</option>
+        {% endfor %}
+    </select>
+    <br>
     {% if gits %}
-    {% for el in gits %}
-    <div class="alert alert-warning">
-        <h3>{{el.name}}</h3>
-        <p>{{el.descript}}</p>
-        <p>{{el.language}}</p>
-        <p>{{el.date}}</p>
-    </div>
-    {% endfor %}
+    <table>
+        <tr>
+            <th>Название</th>
+            <th>Описание</th>
+            <th>Язык</th>
+            <th>Дата</th>
+            <th>Ссылка</th>
+        </tr>
+        {% for el in gits %}
+        <tr class="{% cycle 'odd_row' 'even_row' %}">
+            <td>{{el.name}}</td>
+            <td>{{el.descript}}</td>
+            <td>{{el.language}}</td>
+            <td>{{el.date}}</td>
+            <td><a href="{{el.url}}">Ссылка</a></td>
+        </tr>
+        {% endfor %}
+    </table>
     {% else %}
     <p>Нет проектов</p>
     {% endif %}
+
 </div>
 {% endblock %}
