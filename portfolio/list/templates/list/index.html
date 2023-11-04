@@ -3,74 +3,93 @@
 {% block title %}GitHub{% endblock %}
 
 {% block content %}
-<div class="features">
-    <h1>Мои проекты</h1>
-    <!--    <form method="get">-->
-    <!--        <button type="submit" class="btn btn-sm btn-primary btn-raised mr-3">Сортировать</button>-->
-    <!--        <input name="sort" type="checkbox" value="pub_date">-->
-    <!--    </form>-->
-    <br>
-    <a class="text-dark text-sm mb-1" href="{% url 'list_git' %}">Удалить фильтры</a>
-    <form method="get">
-        <input name="sort" type="checkbox" value="pub_date">
-        <div>
-            {% for field in filter.form %}
+    <div class="features">
+        <h1>Мои проекты</h1>
+        <!--    <form method="get">-->
+        <!--        <button type="submit" class="btn btn-sm btn-primary btn-raised mr-3">Сортировать</button>-->
+        <!--        <input name="sort" type="checkbox" value="pub_date">-->
+        <!--    </form>-->
+        <br>
+        <a class="text-dark text-sm mb-1" href="{% url 'list_git' %}">Удалить фильтры</a>
+        <form method="get">
+            <select name="order">
+                <option value="desc" {% if order_direction == "desc" %}selected{% endif %}>По убыванию</option>
+                <option value="asc" {% if order_direction == "asc" %}selected{% endif %}>По возрастанию</option>
+
+
+{#                <option value="desc">По убыванию</option>#}
+{#                <option value="asc">По возрастанию</option>#}
+            </select>
             <div>
-                {{ field.label_tag }}
-                {{ field }}
+                {% for field in filter.form %}
+                    <div>
+                        {{ field.label_tag }}
+                        {{ field }}
+                    </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
-        <button type="submit" class="btn btn-dark mb-3 mt-2">Фильтр</button>
-    </form>
-    <table>
-        <tr>
-            <th>Название</th>
-            <th>Описание</th>
-            <th>Язык</th>
-            <th>Дата</th>
-            <th>Ссылка</th>
-        </tr>
-        {% for el in filter.qs %}
-        <tr class="{% cycle 'odd_row' 'even_row' %}">
-            <td>{{el.name}}</td>
-            <td>{{el.descript}}</td>
-            <td>{{el.language}}</td>
-            <td>{{el.date}}</td>
-            <td><a href="{{el.url}}">Ссылка</a></td>
-        </tr>
-        {% endfor %}
-    </table>
+            <button type="submit" class="btn btn-dark mb-3 mt-2">Фильтр</button>
+        </form>
+        <table>
+            <tr>
+                <th>Название</th>
+                <th>Описание</th>
+                <th>Язык</th>
+                <th id="date">Дата</th>
+                <th>Ссылка</th>
+            </tr>
+            {% if filter.qs|length > 1 %}
+                {% for el in filter.qs %}
+                    <tr class="{% cycle 'odd_row' 'even_row' %}">
+                        <td>{{ el.name }}</td>
+                        <td>{{ el.descript }}</td>
+                        <td>{{ el.language }}</td>
+                        <td>{{ el.date|date:"d.m.Y" }}</td>
+                        <td><a href="{{ el.url }}">Ссылка</a></td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                {% for el in filter.qs %}
+                    <tr class="single_row">
+                        <td>{{ el.name }}</td>
+                        <td>{{ el.descript }}</td>
+                        <td>{{ el.language }}</td>
+                        <td>{{ el.date }}</td>
+                        <td><a href="{{ el.url }}">Ссылка</a></td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </table>
 
 
-    <!--    <select name="filter_language" id="language-select">-->
-    <!--        {% for language in set_languages %}-->
-    <!--        <option value="{language}">{{language}}</option>-->
-    <!--        {% endfor %}-->
-    <!--    </select>-->
-    <!--    <br>-->
-    <!--    {% if gits %}-->
-    <!--    <table>-->
-    <!--        <tr>-->
-    <!--            <th>Название</th>-->
-    <!--            <th>Описание</th>-->
-    <!--            <th>Язык</th>-->
-    <!--            <th>Дата</th>-->
-    <!--            <th>Ссылка</th>-->
-    <!--        </tr>-->
-    <!--        {% for el in gits %}-->
-    <!--        <tr class="{% cycle 'odd_row' 'even_row' %}">-->
-    <!--            <td>{{el.name}}</td>-->
-    <!--            <td>{{el.descript}}</td>-->
-    <!--            <td>{{el.language}}</td>-->
-    <!--            <td>{{el.date}}</td>-->
-    <!--            <td><a href="{{el.url}}">Ссылка</a></td>-->
-    <!--        </tr>-->
-    <!--        {% endfor %}-->
-    <!--    </table>-->
-    <!--    {% else %}-->
-    <!--    <p>Нет проектов</p>-->
-    <!--    {% endif %}-->
+        <!--    <select name="filter_language" id="language-select">-->
+        <!--        {% for language in set_languages %}-->
+            <!--        <option value="{language}">{{language}}</option>-->
+            <!--        {% endfor %}-->
+        <!--    </select>-->
+        <!--    <br>-->
+        <!--    {% if gits %}-->
+            <!--    <table>-->
+            <!--        <tr>-->
+            <!--            <th>Название</th>-->
+            <!--            <th>Описание</th>-->
+            <!--            <th>Язык</th>-->
+            <!--            <th>Дата</th>-->
+            <!--            <th>Ссылка</th>-->
+            <!--        </tr>-->
+            <!--        {% for el in gits %}-->
+                <!--        <tr class="{% cycle 'odd_row' 'even_row' %}">-->
+                <!--            <td>{{el.name}}</td>-->
+                <!--            <td>{{el.descript}}</td>-->
+                <!--            <td>{{el.language}}</td>-->
+                <!--            <td>{{el.date}}</td>-->
+                <!--            <td><a href="{{el.url}}">Ссылка</a></td>-->
+                <!--        </tr>-->
+                <!--        {% endfor %}-->
+            <!--    </table>-->
+            <!--    {% else %}-->
+            <!--    <p>Нет проектов</p>-->
+            <!--    {% endif %}-->
 
-</div>
+    </div>
 {% endblock %}

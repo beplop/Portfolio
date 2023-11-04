@@ -120,11 +120,35 @@ main .features p {
     font-size: 20px;
 }
 
+
 main .features h1 {
     font-weight: bold;
 }
 
-.odd_row {
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 3px solid dimgrey;
+}
+
+th {
+    text-align: center;
+    border: 1px solid grey;
+    padding: 10px;
+}
+
+/*Столбец описания выравнивание по ширине*/
+td:nth-child(2) {
+    text-align: justify;
+}
+
+td {
+    text-align: center;
+    border: 1px solid grey;
+    padding: 10px;
+}
+
+.single_row {
     background: white;
 }
 
@@ -132,4 +156,9 @@ main .features h1 {
     background: #074e9f;
     color: white;
 }
+
+.odd_row {
+    background: white;
+}
+
 
