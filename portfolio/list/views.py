@@ -1,12 +1,12 @@
-from django.shortcuts import render
 from .models import Projects
 from github import Github
+from . import git_token
 
 from .filters import ProjectsFilter
 from django_filters.views import FilterView
 
 username = 'beplop'
-g = Github('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')
+g = Github(git_token.my_token)
 user = g.get_user(username)
 
 
