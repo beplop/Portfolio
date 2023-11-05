@@ -1,6 +1,6 @@
 {% extends 'main/layout.html' %}
 
-{% block title %}GitHub{% endblock %}
+{% block title %}Мои проекты{% endblock %}
 
 {% block content %}
     <div class="features">
@@ -20,11 +20,13 @@
                     {{ filter.form }}
                 </div>
                 <button type="submit" class="filter-button-apply">Применить</button>
-                <button type="reset" class="filter-button-clear"><a href="{% url 'list_git' %}">Сбросить</a></button>
+                <div class="filter-button-clear-wrapper"><a href="{% url 'list_git' %}">
+                    <div class="filter-button-clear">Сбросить</div></a>
+                </div>
             </form>
         </div>
         <br>
-        <table>
+        <table class="table-github">
             <tr>
                 <th>№</th>
                 <th>Название</th>

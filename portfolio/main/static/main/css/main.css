@@ -46,6 +46,11 @@ a i {
     margin-left: -5px;
 }
 
+.item_head div {
+    padding-left: 25px;
+    margin-top: -20px;
+}
+
 aside:hover {
     width: 350px;
 }
@@ -61,6 +66,7 @@ aside:hover > .item_head .aside_text_head {
 .aside_text, .aside_text_head {
     text-align: center;
     color: white;
+
 }
 
 hr {
@@ -101,23 +107,11 @@ div a {
     text-decoration: none;
 }
 
-button {
-    background: white;
-    border-color: dimgrey;
-    border-width: 1px;
-    padding: 15px;
-    color: dimgrey;
-    font-weight: bold;
-    border-radius: 3px;
-    font-size: 20px;
-    transition: ease-in-out 0.7s;
-}
 
 .filter-button-apply, .filter-button-clear {
     background: white;
     margin-right: 10px;
-    border-color: dimgrey;
-    border-width: 1px;
+    border: 1px solid dimgrey;
     padding: 7px;
     color: dimgrey;
     font-weight: bold;
@@ -126,23 +120,21 @@ button {
     transition: ease-in-out 0.7s;
 }
 
-.filter-button-clear a {
-    color: dimgrey;
+.filter-button-clear-wrapper {
+    width: min-content;
+    display: inline-flex;
 }
 
 .filter-button-apply:hover {
     transition: transform .5s ease;
     transform: scale(1.05);
-    background: #b5fcb5;
+    background: #074e9f;
+    /*background: #b5fcb5;*/
+    color: white;
+    border: 1px solid black;
 }
 
 .filter-button-clear:hover {
-    transition: transform .5s ease;
-    transform: scale(1.05);
-    background: #FFB6C1;
-}
-
-button:hover {
     transition: transform .5s ease;
     transform: scale(1.05);
 }
@@ -166,39 +158,53 @@ main .features h1 {
     font-weight: bold;
 }
 
-table {
+.table-contacts {
+    width: 50%;
+}
+
+.table-contacts td {
+    text-align: left;
+    padding: 10px;
+    font-size: 18px;
+}
+
+#contacts {
+    margin-top: 30px;
+}
+
+.table-github {
     width: 100%;
     border-collapse: collapse;
     border: 3px solid dimgrey;
 }
 
-th {
+.table-github th {
     text-align: center;
     border: 3px solid dimgrey;
     padding: 10px;
 }
 
 /*Столбец описания выравнивание по ширине*/
-td:nth-child(2) {
+.table-github td:nth-child(3) {
     text-align: justify;
 }
 
-td {
+.table-github td {
     text-align: center;
     border: 1px solid dimgrey;
     padding: 10px;
 }
 
-.single_row {
+.table-github .single_row {
     background: white;
 }
 
-.even_row {
+.table-github .even_row {
     background: #074e9f;
     color: white;
 }
 
-.even_td {
+.table-github .even_td {
     border: 1px solid ghostwhite;
 }
 
@@ -214,6 +220,48 @@ td {
 
 h1 {
     margin-top: -30px;
+}
+
+.button {
+    background: white;
+    border: 1px solid dimgrey;
+    padding: 10px;
+    margin-right: 30px;
+    margin-left: 30px;
+    width: min-content;
+    color: dimgrey;
+    font-weight: bold;
+    border-radius: 3px;
+    font-size: 20px;
+    transition: ease-in-out 0.7s;
+}
+
+.button:hover {
+    transition: transform .5s ease;
+    transform: scale(1.15);
+}
+
+.button-wrapper {
+    width: min-content;
+    display: inline-flex;
+}
+
+.p_about {
+    text-align: left;
+    text-indent: 30px;
+}
+
+.pdf {
+    margin-bottom: 25px;
+}
+
+#telegram-icon {
+    color: #074e9f;
+}
+
+#h2-contacts {
+    text-align: left;
+    padding-left: 8px;
 }
 
 

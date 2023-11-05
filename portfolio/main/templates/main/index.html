@@ -1,20 +1,58 @@
 {% extends 'main/layout.html' %}
 
-{% block title %}Обо мне{% endblock %}
+{% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-<div class="features">
-    <h1>{{title}}</h1>
-    <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-        laborum."</p>
+    <div class="features">
+        <h1>{{ title }}</h1>
+        <br>
+        <p class="p_about"> Меня зовут Артур. Я начинающий Python
+            backend-разработчик. Этот сайт написан
+            на Django и преследует две цели:
+            развитие моих навыков и создание сайта-визитки для трудоустройства. Сайт еще будет дорабатываться в
+            будущем. </p>
+        <p class="p_about">Что я хотел научиться делать, разрабатывая этот сайт? В первую очередь опробовать Django
+            фреймворк, шаблонизатор Jinja и написать что-то на Python, поработать с выгрузкой данных через API GitHub и
+            кэшированием, освежить память по
+            работе с БД, Git, HTML, CSS, поработать с ООП и в целом пройти весь путь от разработки сайта до его
+            хостинга.</p>
+        <br>
+        <h2>Мое портфолио:</h2>
 
-    {% for val in values %}
-    <p>{{val}}</p>
-    {% endfor %}
+        <br>
+        <iframe class="pdf"
+                src="https://docs.google.com/file/d/1JezhSdjEdH761tj5MJCa3v-IzdlC-E7F/preview"
+                width="100%" height="100%"></iframe>
 
-    <button class="button">Скачать резюме</button>
-</div>
+        <div class="button-wrapper"><a
+                href="https://drive.google.com/u/0/uc?id=1JezhSdjEdH761tj5MJCa3v-IzdlC-E7F&export=download">
+            <div class="button">Скачать</div>
+        </a>
+        </div>
+        <div class="button-wrapper"><a
+                href="https://docs.google.com/file/d/1JezhSdjEdH761tj5MJCa3v-IzdlC-E7F/view">
+            <div class="button">Открыть</div>
+        </a>
+        </div>
+
+        <div id="contacts">
+            <h2 id="h2-contacts">Контакты</h2>
+            <table class="table-contacts">
+                <tr>
+                    <td>E-mail:</td>
+                    <td>artyr-xamidullin@mail.ru</td>
+                </tr>
+                <tr>
+                    <td>Номер телефона:</td>
+                    <td>89196459702</td>
+                </tr>
+                <tr>
+                    <td>Telegram:</td>
+                    <td><a href="https://t.me/beplop1"><i id="telegram-icon"
+                                                          class="fa-brands fa-telegram fa-xl"></i></a></td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
 {% endblock %}

@@ -7,20 +7,6 @@ from .filters import ProjectsFilter
 from django_filters.views import FilterView
 
 
-# def get_repos():
-#     repos = user.get_repos()
-#     for repo in repos:
-#         # Если в БД уже есть запись с определенным репозиторием, то обновляем ее, тем самым делая актуальной
-#         if Projects.objects.filter(repo_id=repo.id).exists():
-#             Projects.objects.filter(repo_id=repo.id).update(name=repo.full_name[7:], descript=repo.description,
-#                                                             date=repo.created_at,
-#                                                             language=repo.language, url=repo.html_url)
-#         else:
-#             p = Projects(repo_id=repo.id, name=repo.full_name[7:], descript=repo.description, date=repo.created_at,
-#                          language=repo.language, url=repo.html_url)
-#             p.save()
-
-
 class ProjectsFilterView(FilterView):
     model = Projects
     template_name = 'list/index.html'
@@ -51,8 +37,8 @@ class ProjectsFilterView(FilterView):
                     'html_url': repo.html_url,
                 })
 
-            # Сохраняем результаты запроса в кеше на заданное время
-            cache.set('github_data', data, 60)
+            # Сохраняем результаты запроса в кеше на 20 минут
+            cache.set('github_data', data, 60 * 20)
 
             return data, True
 
@@ -86,32 +72,9 @@ class ProjectsFilterView(FilterView):
 
         return queryset
 
+    # Передаем данные в index.html для отображения текущей сортировки в <select>
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         order_direction = self.request.GET.get('order')
         context['order_direction'] = order_direction
         return context
-
-# def list_git(request):
-#     repos = user.get_repos()
-#
-#     for repo in repos:
-#         # если в БД уже есть запись с определенным репозиторием, то обновляем ее, тем самым делая актуальной
-#         if Projects.objects.filter(repo_id=repo.id).exists():
-#             Projects.objects.filter(repo_id=repo.id).update(name=repo.full_name[7:], descript=repo.description,
-#                                                             date=repo.created_at,
-#                                                             language=repo.language, url=repo.html_url)
-#         else:
-#             p = Projects(repo_id=repo.id, name=repo.full_name[7:], descript=repo.description, date=repo.created_at,
-#                          language=repo.language, url=repo.html_url)
-#             p.save()
-#
-#     # gits = Projects.objects.all().order_by('date')
-#     gits = Projects.objects.all()
-#
-#     # добавляем все используемые языки из репозиториев во множество, чтобы не было повторений
-#     set_languages = set()
-#     for el in gits:
-#         set_languages.add(el.language)
-#
-#     return render(request, 'list/index.html', {'gits': gits, 'set_languages': set_languages})
