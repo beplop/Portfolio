@@ -23,10 +23,22 @@ aside {
     z-index: 10;
 }
 
-i {
+.item i {
     float: left;
     padding-top: 12px;
     color: white;
+}
+
+.even_td i {
+    color: white;
+}
+
+.odd_td i {
+    color: black;
+}
+
+a i {
+    color: black;
 }
 
 .item_head i {
@@ -101,8 +113,9 @@ button {
     transition: ease-in-out 0.7s;
 }
 
-.filter-button {
+.filter-button-apply, .filter-button-clear {
     background: white;
+    margin-right: 10px;
     border-color: dimgrey;
     border-width: 1px;
     padding: 7px;
@@ -111,6 +124,22 @@ button {
     border-radius: 3px;
     font-size: 16px;
     transition: ease-in-out 0.7s;
+}
+
+.filter-button-clear a {
+    color: dimgrey;
+}
+
+.filter-button-apply:hover {
+    transition: transform .5s ease;
+    transform: scale(1.05);
+    background: #b5fcb5;
+}
+
+.filter-button-clear:hover {
+    transition: transform .5s ease;
+    transform: scale(1.05);
+    background: #FFB6C1;
 }
 
 button:hover {
@@ -138,7 +167,6 @@ main .features h1 {
 }
 
 table {
-    margin-top: 60px;
     width: 100%;
     border-collapse: collapse;
     border: 3px solid dimgrey;
@@ -174,95 +202,14 @@ td {
     border: 1px solid ghostwhite;
 }
 
-/*.filter {*/
-/*    float: left;*/
-/*    width: 50px;*/
-/*    color: white;*/
-/*    transition: ease-in-out 0.7s;*/
-/*    overflow: hidden;*/
-/*    z-index: 10;*/
-/*}*/
-
-/*.filter:hover {*/
-/*    width: 350px;*/
-/*}*/
-
-/*.filter-order {*/
-/*    position: relative;*/
-/*}*/
-
-.filter-open-button {
-    /*display: inline-block;*/
-    background-color: #074e9f;
-    position: absolute;
-    left: 25.2%;
-    /*top: 15%;*/
-    /*position: fixed;*/
-    padding: 10px 20px;
-    cursor: pointer;
-    border-color: black;
-    border-width: 5px;
-    color: white;
-    border-radius: 3px;
-    font-size: 16px;
-    transition: ease-in-out 0.7s;
-    /*display: inline-block; !* Добавьте эту строку для отображения на одной линии *!*/
-    vertical-align: middle; /* Добавьте эту строку для вертикального выравнивания */
-    /*horiz-align: left;*/
-    /*margin-right: 10px; !* Добавьте эту строку для отступа между кнопкой и фильтром *!*/
-    /*position: relative;*/
-}
-
-.filter-open-button:hover {
-    transition: transform .5s ease;
-    transform: scale(1.05);
-    display: inline-block;
-}
-
-.filter {
-    overflow: hidden;
-    width: 0px;
-    height: 50px;
-    transition: width 0.5s ease-in;
-    float: left;
-    /*padding-left: 150px;*/
-    /*display: inline-block;*/
-    /*vertical-align: middle;*/
-    /*white-space: nowrap;*/
-    /*position: absolute;*/
-    /*background-color: #f9f9f9;*/
-    /*padding: 10px;*/
-    /*box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);*/
-}
-
-#filter-toggle {
-    opacity: 0;
-    pointer-events: none;
-    /*horiz-align: left;*/
-}
-
-#filter-toggle:checked + .filter-open-button + .filter {
-    display: inline-block;
-    width: 1000px;
-}
-
-#filter-toggle:checked > .filter {
-    padding-bottom: 20px;
-}
-
 .filter-order {
     display: inline-block;
-    vertical-align: middle;
+    margin-right: 10px;
 }
 
 .filter-date {
     display: inline-block;
-    vertical-align: middle;
-}
-
-.filter-form {
-    display: inline-block;
-    vertical-align: middle;
+    margin-right: 10px;
 }
 
 h1 {

@@ -6,23 +6,21 @@
     <div class="features">
         <h1>Мои проекты</h1>
         <br>
-        <input type="checkbox" id="filter-toggle">
-        <label for="filter-toggle" class="filter-open-button">Фильтры</label>
         <div class="filter">
             <form method="get" class="filter-form">
                 <div class="filter-order">
                 <label for="sort_select">Сортировать:</label>
                 <select name="order" id="sort_select">
-                    <option value="desc" {% if order_direction == "desc" %}selected{% endif %}>↑</option>
-                    <option value="asc" {% if order_direction == "asc" %}selected{% endif %}>↓</option>
+                    <option value="desc" {% if order_direction == "desc" %}selected{% endif %}>от новых к старым</option>
+                    <option value="asc" {% if order_direction == "asc" %}selected{% endif %}>от старых к новым</option>
                 </select>
                 </div>
                 <div class="filter-date">
                     {{ filter.form.label_tag }}
                     {{ filter.form }}
                 </div>
-                <button type="submit" class="filter-button">Применить</button>
-                <button type="reset" class="filter-button"><a class="text-dark text-sm mb-1" href="{% url 'list_git' %}">Сбросить</a></button>
+                <button type="submit" class="filter-button-apply">Применить</button>
+                <button type="reset" class="filter-button-clear"><a href="{% url 'list_git' %}">Сбросить</a></button>
             </form>
         </div>
         <br>
@@ -43,7 +41,7 @@
                         <td class="{% cycle 'odd_td' 'even_td' %}">{{ el.descript }}</td>
                         <td class="{% cycle 'odd_td' 'even_td' %}">{{ el.language }}</td>
                         <td class="{% cycle 'odd_td' 'even_td' %}">{{ el.date|date:"d.m.Y" }}</td>
-                        <td class="{% cycle 'odd_td' 'even_td' %}"><a href="{{ el.url }}">Ссылка</a></td>
+                        <td class="{% cycle 'odd_td' 'even_td' %}"><a href="{{ el.url }}"><i class="fa-brands fa-github fa-xl st"></i></a></td>
                     </tr>
                 {% endfor %}
             {% else %}
@@ -54,7 +52,7 @@
                         <td>{{ el.descript }}</td>
                         <td>{{ el.language }}</td>
                         <td>{{ el.date }}</td>
-                        <td><a href="{{ el.url }}">Ссылка</a></td>
+                        <td><a href="{{ el.url }}"><i class="fa-brands fa-github fa-xl st"></i></a></td>
                     </tr>
                 {% endfor %}
             {% endif %}
