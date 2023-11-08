@@ -128,15 +128,14 @@ div a {
 .filter-button-apply:hover {
     transition: transform .5s ease;
     transform: scale(1.05);
-    background: #074e9f;
-    /*background: #b5fcb5;*/
-    color: white;
-    border: 1px solid black;
 }
 
 .filter-button-clear:hover {
     transition: transform .5s ease;
     transform: scale(1.05);
+    background: #074e9f;
+    color: white;
+    border: 1px solid black;
 }
 
 main .features {
