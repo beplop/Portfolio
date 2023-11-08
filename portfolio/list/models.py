@@ -2,6 +2,7 @@ from django.db import models
 
 
 class Projects(models.Model):
+    """Проекты с GitHub на сайте"""
     repo_id = models.IntegerField('ID репозитория', default=0)
     name = models.CharField('Название', max_length=50, default='')
     descript = models.CharField('Описание', max_length=250, default='', null=True)

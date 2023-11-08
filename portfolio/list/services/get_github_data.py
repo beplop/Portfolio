@@ -1,15 +1,18 @@
 from django.core.cache import cache
-from . import git_token
+from django.conf import settings
 from github import Github
-from .models import Projects
-from .utils.database_utils import *
+from ..models import Projects
+from ..utils.database_utils import diff_db_and_cache
 
 
-class UpdateDB:
-    def get_github_data(self) -> tuple:
+class GetGithubData:
+    """Получение данных с GitHub, сохранение их в кэш и обновление БД"""
+
+    @staticmethod
+    def _data_caching() -> tuple:
         """
         Получает данные с GitHub и сохраняет их в кэш
-        :return: кортеж данных из кэша и флаг, который говорит обновлялся ли кэш
+        :return: кортеж данных из кэша и флага, который говорит обновлялся ли кэш
         """
         # username = 'BugBountyHuntr'
         username = 'beplop'
@@ -21,7 +24,7 @@ class UpdateDB:
             return cached_data, False
         else:
             # Если данных нет в кеше, выполняем запрос к API GitHub
-            g = Github(git_token.my_token)
+            g = Github(settings.MY_GITHUB_TOKEN)
             # g = Github()
             user = g.get_user(username)
             repos = user.get_repos()
@@ -44,12 +47,12 @@ class UpdateDB:
 
             return data, True
 
-    def update_database(self):
+    def update_database(self) -> None:
         """
         Обновляет БД, если кэш был обновлен
         :return:
         """
-        data, cache_is_updated = self.get_github_data()
+        data, cache_is_updated = self._data_caching()
 
         # Актуализируем БД только если кэш обновлялся
         if cache_is_updated:

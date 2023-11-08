@@ -1,7 +1,8 @@
 from .models import Projects
 from .filters import ProjectsFilter
 from django_filters.views import FilterView
-from .update_database import UpdateDB
+
+from .services.get_github_data import GetGithubData
 
 
 class ProjectsFilterView(FilterView):
@@ -11,8 +12,8 @@ class ProjectsFilterView(FilterView):
 
     # Актуализируем БД и применяем сортировку
     def get_queryset(self):
-        update_db = UpdateDB()
-        update_db.update_database()
+        get_github_data = GetGithubData()
+        get_github_data.update_database()
         queryset = super().get_queryset()
 
         order_direction = self.request.GET.get('order')

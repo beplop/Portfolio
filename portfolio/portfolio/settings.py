@@ -12,14 +12,18 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 import os.path
 from pathlib import Path
 
+from dotenv import load_dotenv
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+load_dotenv(os.path.join(BASE_DIR, 'Portfolio.env'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-baa9o3nstrsdx&&qf%a0wnv-rld^@#6=$un9e!=*3+fe=k#k01'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -146,3 +150,5 @@ CACHES = {
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+
+MY_GITHUB_TOKEN = os.environ.get('MY_GITHUB_TOKEN')
