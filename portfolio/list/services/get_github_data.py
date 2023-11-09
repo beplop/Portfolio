@@ -1,8 +1,16 @@
 from django.core.cache import cache
 from django.conf import settings
-from github import Github
+from github import Github, GithubException
 from ..models import Projects
 from ..utils.database_utils import diff_db_and_cache
+
+from django.http import HttpResponse
+
+import logging
+
+from main.views import pageNotFound
+
+logger = logging.getLogger(__name__)
 
 
 class GetGithubData:
@@ -23,29 +31,39 @@ class GetGithubData:
         if cached_data:
             return cached_data, False
         else:
-            # Если данных нет в кеше, выполняем запрос к API GitHub
-            g = Github(settings.MY_GITHUB_TOKEN)
-            # g = Github()
-            user = g.get_user(username)
-            repos = user.get_repos()
-            data = []  # =[] если нет репозиториев
+            try:
+                # Если данных нет в кеше, выполняем запрос к API GitHub
+                g = Github(settings.MY_GITHUB_TOKEN)
+                # g = Github()
 
-            # if repos.totalCount == 0:
+                user = g.get_user(username)
+                repos = user.get_repos()
+                data = []
 
-            for repo in repos:
-                data.append({
-                    'repo_id': repo.id,
-                    'name': repo.name,
-                    'description': repo.description,
-                    'language': repo.language,
-                    'date': repo.created_at,
-                    'html_url': repo.html_url,
-                })
+                if repos.totalCount == 0:
+                    logger.error('У пользователя нет репозиториев')
+                    raise Exception('У пользователя нет репозиториев')
 
-            # Сохраняем результаты запроса в кеше на 20 минут
-            cache.set('github_data', data, 60 * 20)
+                for repo in repos:
+                    data.append({
+                        'repo_id': repo.id,
+                        'name': repo.name,
+                        'description': repo.description,
+                        'language': repo.language,
+                        'date': repo.created_at,
+                        'html_url': repo.html_url,
+                    })
 
-            return data, True
+                # Сохраняем результаты запроса в кеше на 20 минут
+                cache.set('github_data', data, 5)
+
+                logger.info('Подключение к GitHub успешно, кэш создан')
+
+                return data, True
+
+            except GithubException as e:
+                logger.error(e)
+                raise e
 
     def update_database(self) -> None:
         """
@@ -60,6 +78,7 @@ class GetGithubData:
             diff = diff_db_and_cache(data)
             for el in diff:
                 Projects.objects.filter(repo_id=el).delete()
+                logger.info(f'Из БД удален неактульный репозиторий, которого не было в кэше: id: {el}')
 
             for el in data:
                 # Если в БД уже есть запись с определенным репозиторием, то обновляем ее, тем самым делая актуальной
@@ -67,7 +86,10 @@ class GetGithubData:
                     Projects.objects.filter(repo_id=el['repo_id']).update(name=el['name'], descript=el['description'],
                                                                           date=el['date'],
                                                                           language=el['language'], url=el['html_url'])
+                    logger.info(f'В БД обновлен репозиторий: Название: {el["name"]}')
                 else:
                     p = Projects(repo_id=el['repo_id'], name=el['name'], descript=el['description'],
                                  date=el['date'], language=el['language'], url=el['html_url'])
                     p.save()
+                    logger.info(
+                        f'В БД создана запись с репозиторием: Дата создания репозитория: {el["date"]}, Название: {el["name"]}')

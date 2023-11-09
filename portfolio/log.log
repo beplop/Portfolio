@@ -1,0 +1,52 @@
+WARNING 2023-11-09 00:12:38,029 views: ¬веден неверный GET-запрос сортировки
+WARNING 2023-11-09 00:12:52,436 views: ¬веден неверный GET-запрос сортировки
+WARNING 2023-11-09 00:13:43,637 : ¬веден неверный GET-запрос сортировки
+WARNING 2023-11-09 00:22:19,367 views: ¬веден неверный GET-запрос сортировки
+WARNING 2023-11-09 00:22:25,072 views: ¬веден неверный GET-запрос сортировки
+WARNING 2023-11-09 00:23:58,380 views: ¬веден неверный GET-запрос сортировки
+WARNING 2023-11-09 00:25:29,379 views: ¬веден неверный GET-запрос сортировки
+WARNING 2023-11-09 00:28:02,895 views: ¬веден неверный GET-запрос сортировки
+WARNING 2023-11-09 00:28:10,406 views: ¬веден неверный GET-запрос сортировки
+WARNING 2023-11-09 00:28:57,459 views: ¬веден неверный GET-запрос сортировки
+WARNING 2023-11-09 00:37:54,633 views: ¬веден неверный GET-запрос сортировки
+WARNING 2023-11-09 00:37:57,651 views: ¬веден неверный GET-запрос сортировки
+ERROR 2023-11-09 01:35:31,108 get_github_data: Error: 404 {"message": "Not Found", "documentation_url": "https://docs.github.com/rest/users/users#get-a-user"}
+ERROR 2023-11-09 01:37:19,041 get_github_data: Error: 404 {"message": "Not Found", "documentation_url": "https://docs.github.com/rest/users/users#get-a-user"}
+ERROR 2023-11-09 01:38:35,197 get_github_data: 404 {"message": "Not Found", "documentation_url": "https://docs.github.com/rest/users/users#get-a-user"}
+ERROR 2023-11-09 01:40:20,501 get_github_data: 404 {"message": "Not Found", "documentation_url": "https://docs.github.com/rest/users/users#get-a-user"}
+ERROR 2023-11-09 01:42:22,919 get_github_data: 404 {"message": "Not Found", "documentation_url": "https://docs.github.com/rest/users/users#get-a-user"}
+ERROR 2023-11-09 01:43:11,406 get_github_data: 404 {"message": "Not Found", "documentation_url": "https://docs.github.com/rest/users/users#get-a-user"}
+ERROR 2023-11-09 01:43:23,663 get_github_data: 404 {"message": "Not Found", "documentation_url": "https://docs.github.com/rest/users/users#get-a-user"}
+ERROR 2023-11-09 02:12:50,980 get_github_data: 404 {"message": "Not Found", "documentation_url": "https://docs.github.com/rest/users/users#get-a-user"}
+ERROR 2023-11-09 02:14:09,934 get_github_data: 404 {"message": "Not Found", "documentation_url": "https://docs.github.com/rest/users/users#get-a-user"}
+ERROR 2023-11-09 02:15:06,558 get_github_data: 404 {"message": "Not Found", "documentation_url": "https://docs.github.com/rest/users/users#get-a-user"}
+ERROR 2023-11-09 02:17:08,327 get_github_data: 404 {"message": "Not Found", "documentation_url": "https://docs.github.com/rest/users/users#get-a-user"}
+ERROR 2023-11-09 02:20:17,694 get_github_data: 404 {"message": "Not Found", "documentation_url": "https://docs.github.com/rest/users/users#get-a-user"}
+ERROR 2023-11-09 02:27:48,537 get_github_data: 404 {"message": "Not Found", "documentation_url": "https://docs.github.com/rest/users/users#get-a-user"}
+WARNING 2023-11-09 02:31:40,868 get_github_data: ” пользовател€ нет репозиториев
+ERROR 2023-11-09 02:33:10,495 get_github_data: ” пользовател€ нет репозиториев
+ERROR 2023-11-09 02:33:26,615 get_github_data: ” пользовател€ нет репозиториев
+WARNING 2023-11-09 02:33:27,187 views: ¬веден неверный GET-запрос сортировки
+WARNING 2023-11-09 02:33:54,437 views: ¬веден неверный GET-запрос сортировки
+WARNING 2023-11-09 02:34:21,516 views: ¬веден неверный GET-запрос сортировки
+WARNING 2023-11-09 02:35:36,998 views: ¬веден неверный GET-запрос сортировки
+WARNING 2023-11-09 02:35:39,839 views: ¬веден неверный GET-запрос сортировки
+WARNING 2023-11-09 02:36:16,471 views: ¬веден неверный GET-запрос сортировки
+WARNING 2023-11-09 02:36:21,467 views: ¬веден неверный GET-запрос сортировки
+WARNING 2023-11-09 02:37:00,564 views: ¬веден неверный GET-запрос сортировки
+WARNING 2023-11-09 02:37:26,304 views: ¬веден неверный GET-запрос сортировки
+WARNING 2023-11-09 02:37:39,440 views: ¬веден неверный GET-запрос сортировки
+WARNING 2023-11-09 02:39:00,404 views: ¬веден неверный GET-запрос сортировки
+WARNING 2023-11-09 02:39:13,360 views: ¬веден неверный GET-запрос сортировки
+WARNING 2023-11-09 02:39:58,427 views: ¬веден неверный GET-запрос сортировки
+WARNING 2023-11-09 02:40:07,197 views: ¬веден неверный GET-запрос сортировки
+WARNING 2023-11-09 02:40:10,392 views: ¬веден неверный GET-запрос сортировки
+WARNING 2023-11-09 02:40:30,283 views: ¬веден неверный GET-запрос сортировки
+WARNING 2023-11-09 02:40:32,876 views: ¬веден неверный GET-запрос сортировки
+WARNING 2023-11-09 02:41:56,416 views: ¬веден неверный GET-запрос сортировки
+WARNING 2023-11-09 02:42:19,231 views: ¬веден неверный GET-запрос сортировки
+WARNING 2023-11-09 02:43:04,852 views: ¬веден неверный GET-запрос сортировки
+WARNING 2023-11-09 02:43:19,721 views: ¬веден неверный GET-запрос сортировки
+WARNING 2023-11-09 02:46:56,973 views: ¬веден неверный GET-запрос сортировки
+WARNING 2023-11-09 02:47:29,450 views: ¬веден неверный GET-запрос сортировки
+WARNING 2023-11-09 02:47:31,903 views: ¬веден неверный GET-запрос сортировки

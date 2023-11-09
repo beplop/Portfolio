@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django_filters',
     'livereload',
     "debug_toolbar",
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -152,3 +153,34 @@ INTERNAL_IPS = [
 ]
 
 MY_GITHUB_TOKEN = os.environ.get('MY_GITHUB_TOKEN')
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'WARNING',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'log.log'),
+            'formatter': 'verbose',
+        },
+        'file_db': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'log_db.log'),
+            'formatter': 'verbose',
+        },
+    },
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s: %(message)s'
+        }
+    },
+    'loggers': {
+        'list': {
+            'handlers': ['file', 'file_db'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}
