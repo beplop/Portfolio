@@ -8,7 +8,8 @@ def diff_db_and_cache(data: list[dict]) -> list[int]:
     :return: список с неактуальными repo_id в БД, которые следует удалить
     """
     diff_db_and_cache = list()
+    cache = [x['repo_id'] for x in data]
     for el in Projects.objects.values_list('repo_id'):
-        if el[0] not in [x['repo_id'] for x in data]:
+        if el[0] not in cache:
             diff_db_and_cache.append(el[0])
     return diff_db_and_cache

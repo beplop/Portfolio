@@ -1,5 +1,6 @@
 from django.http import HttpResponseNotFound
 from django.shortcuts import render
+from django.conf import settings
 from django.views.decorators.cache import cache_page
 
 
@@ -7,6 +8,7 @@ from django.views.decorators.cache import cache_page
 def index(request):
     data = {
         'title': 'Обо мне',
+        'pdf_cv': settings.PDF_CV
     }
     return render(request, 'main/index.html', data)
 

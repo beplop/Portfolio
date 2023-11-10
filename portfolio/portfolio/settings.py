@@ -153,6 +153,7 @@ INTERNAL_IPS = [
 ]
 
 MY_GITHUB_TOKEN = os.environ.get('MY_GITHUB_TOKEN')
+PDF_CV = '1JezhSdjEdH761tj5MJCa3v-IzdlC-E7F'
 
 LOGGING = {
     'version': 1,
@@ -177,8 +178,13 @@ LOGGING = {
         }
     },
     'loggers': {
-        'list': {
-            'handlers': ['file', 'file_db'],
+        'log': {
+            'handlers': ['file'],
+            'level': 'WARNING',
+            'propagate': True,
+        },
+        'log_db': {
+            'handlers': ['file_db'],
             'level': 'INFO',
             'propagate': True,
         },

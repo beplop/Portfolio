@@ -7,10 +7,10 @@ from .services.get_github_data import GetGithubData
 
 import logging
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger('log')
 
 
-class ProjectsFilterView(FilterView):
+class ProjectsFilterView(BaseView, FilterView):
     model = Projects
     template_name = 'list/index.html'
     filterset_class = ProjectsFilter
@@ -35,14 +35,6 @@ class ProjectsFilterView(FilterView):
                     logger.warning('Введен неверный GET-запрос сортировки')
         else:
             queryset = queryset.order_by('-date')
-
-        # if order_direction == 'asc':
-        #     queryset = queryset.order_by('date')
-        # elif order_direction == 'desc':
-        #     queryset = queryset.order_by('-date')
-        # else:
-        #
-        #     logger.warning('Введен неверный GET-запрос сортировки')
 
         return queryset
 

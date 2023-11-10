@@ -4,13 +4,9 @@ from github import Github, GithubException
 from ..models import Projects
 from ..utils.database_utils import diff_db_and_cache
 
-from django.http import HttpResponse
-
 import logging
 
-from main.views import pageNotFound
-
-logger = logging.getLogger(__name__)
+logger = logging.getLogger('log_db')
 
 
 class GetGithubData:
@@ -55,7 +51,7 @@ class GetGithubData:
                     })
 
                 # Сохраняем результаты запроса в кеше на 20 минут
-                cache.set('github_data', data, 5)
+                cache.set('github_data', data, 60 * 20)
 
                 logger.info('Подключение к GitHub успешно, кэш создан')
 
