@@ -53,7 +53,7 @@
                         <td>{{ el.name }}</td>
                         <td>{{ el.descript }}</td>
                         <td>{{ el.language }}</td>
-                        <td>{{ el.date }}</td>
+                        <td>{{ el.date|date:"d.m.Y" }}</td>
                         <td><a href="{{ el.url }}"><i class="fa-brands fa-github fa-xl st"></i></a></td>
                     </tr>
                 {% endfor %}
